@@ -22,7 +22,10 @@ mix.webpackConfig({
 				enforce: 'pre',
 				exclude: /node_modules/,
 				loader: 'eslint-loader',
-				test: /\.(js|vue)?$/
+				test: /\.(js|vue)?$/,
+				options: {
+					emitWarning: true,
+				},
 			},
 		]
 	}
