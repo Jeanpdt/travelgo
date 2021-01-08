@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e6df395-0cc0-4f42-9256-a6097ad240ca" name="Default Changelist" comment="adjusted eslint">
+    <list default="true" id="0e6df395-0cc0-4f42-9256-a6097ad240ca" name="Default Changelist" comment="latest alterations">
+      <change afterPath="$PROJECT_DIR$/resources/js/Components/Navbar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/Panel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/RoomForm.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/.idea/vcs.xml" beforeDir="false" />
@@ -218,6 +221,7 @@
       <workItem from="1609760377159" duration="3494000" />
       <workItem from="1609786247754" duration="192000" />
       <workItem from="1609810308683" duration="175000" />
+      <workItem from="1610066325141" duration="304000" />
     </task>
     <task id="LOCAL-00001" summary="added quick start">
       <created>1609720061614</created>
@@ -233,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609789340499</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="latest alterations">
+      <created>1610066629891</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610066629891</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +265,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added quick start" />
     <MESSAGE value="adjusted eslint" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjusted eslint" />
+    <MESSAGE value="latest alterations" />
+    <option name="LAST_COMMIT_MESSAGE" value="latest alterations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="410" y="294" width="720" height="538" key="#ESLint" timestamp="1609788515509">
