@@ -1,5 +1,6 @@
-import Hello from '../Pages/Hello';
 import Home from '../Pages/Home';
+import Panel from '../Pages/Panel';
+import RoomForm from '../Pages/RoomForm';
 
 const routes =  [
 	{
@@ -8,9 +9,14 @@ const routes =  [
 		component: Home
 	},
 	{
-		path: '/hello',
-		name: 'hello',
-		component: Hello
+		path: '/panel',
+		name: 'panel',
+		component: Panel
+	},
+	{
+		path: '/room/create',
+		name: 'roomCreate',
+		component: RoomForm
 	}
 ];
 

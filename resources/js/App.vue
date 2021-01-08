@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <router-view />
-    <div>hello</div>
-  </div>
+  <router-view />
 </template>
 
 <script>
