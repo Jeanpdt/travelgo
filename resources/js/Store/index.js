@@ -1,16 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import rooms from './modules/rooms';
+
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
-	state: {
-		somedata: 0,
-	},
-	mutations: {
-
-	},
-	actions: {}
+export default new Vuex.Store({
+	modules: {
+	  rooms: rooms
+	}
 });
 
-export default store;

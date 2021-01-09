@@ -24,7 +24,7 @@
         <li class="nav-item active">
           <router-link
             class="nav-link"
-            to="/room/create"
+            :to="{name: 'roomCreate'}"
           >
             Novo quarto <span class="sr-only">(current)</span>
           </router-link>
