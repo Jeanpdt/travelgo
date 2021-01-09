@@ -2075,6 +2075,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Panel',
@@ -2088,6 +2092,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.$store.dispatch('rooms/getRooms');
+  },
+  methods: {
+    getImageSrc: function getImageSrc(image) {
+      if (image) {
+        return image;
+      }
+    }
   }
 });
 
@@ -2104,8 +2115,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
+/* harmony import */ var _Components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Components/Navbar */ "./resources/js/Components/Navbar.vue");
 //
 //
 //
@@ -2325,8 +2335,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RoomForm',
+  components: {
+    Navbar: _Components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       name: '',
@@ -39682,6 +39696,9 @@ var render = function() {
         "div",
         _vm._l(_vm.rooms, function(room) {
           return _c("div", { key: "room_" + room.id }, [
+            _c("img", {
+              attrs: { src: _vm.getImageSrc(room.imagem_url), alt: "" }
+            }),
             _vm._v("\n      " + _vm._s(room.imagem_url) + "\n    ")
           ])
         }),
@@ -39713,493 +39730,504 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h1", { staticClass: "p-4", staticStyle: { "text-align": "center" } }, [
-      _vm._v("\n    Cadastrar quarto\n  ")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex" }, [
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("navbar"),
+      _vm._v(" "),
       _c(
-        "form",
-        { staticClass: "col-md-12 p-0 m-0", on: { submit: _vm.addRoom } },
-        [
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", { attrs: { for: "inputTitulo" } }, [
-                _vm._v("Titulo")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.titulo,
-                    expression: "titulo"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputTitulo",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.titulo },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.titulo = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", { attrs: { for: "inputEmail4" } }, [_vm._v("Preco")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.preco,
-                    expression: "preco"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputPreco",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.preco },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.preco = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", { attrs: { for: "inputPreco" } }, [_vm._v("Cep")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.cep,
-                    expression: "cep"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputPais",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.cep },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.cep = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputPais" } }, [_vm._v("Pais")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pais,
-                    expression: "pais"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputEstado",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.pais },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.pais = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputEstado" } }, [
-                _vm._v("Estado")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.estado,
-                    expression: "estado"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputEmail4",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.estado },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.estado = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputCidade" } }, [
-                _vm._v("Cidade")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.cidade,
-                    expression: "cidade"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputCidade",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.cidade },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.cidade = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputNumero" } }, [
-                _vm._v("Numero")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.numero,
-                    expression: "numero"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputNumero",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.numero },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.numero = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-12" }, [
-              _c("label", { attrs: { for: "inputRua" } }, [_vm._v("Rua")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.rua,
-                    expression: "rua"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputRua",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.rua },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.rua = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputQuantidadeDeCamas" } }, [
-                _vm._v("Quantidade de camas")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.quantidade_camas,
-                    expression: "quantidade_camas"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputQuantidadeDeCamas",
-                  type: "number",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.quantidade_camas },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.quantidade_camas = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputQuantidadeDeBanheiros" } }, [
-                _vm._v("Quantidade de banheiros")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.quantidade_banheiros,
-                    expression: "quantidade_banheiros"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputQuantidadeDeBanheiros",
-                  type: "number",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.quantidade_banheiros },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.quantidade_banheiros = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputQuantidadeDeHospedes" } }, [
-                _vm._v("Quantidade de hóspedes")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.quantidade_hospedes,
-                    expression: "quantidade_hospedes"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputQuantidadeDeHospedes",
-                  type: "number",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.quantidade_hospedes },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.quantidade_hospedes = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "inputQuantidadeDeQuartos" } }, [
-                _vm._v("Quantidade de quartos")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.quantidade_quartos,
-                    expression: "quantidade_quartos"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "inputQuantidadeDeQuartos",
-                  type: "number",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.quantidade_quartos },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.quantidade_quartos = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-12" }, [
-              _c("label", { attrs: { for: "descricaoQuarto" } }, [
-                _vm._v("Descrição")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.descricao_quarto,
-                    expression: "descricao_quarto"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "descricaoQuarto",
-                  type: "text",
-                  placeholder: "Email",
-                  required: ""
-                },
-                domProps: { value: _vm.descricao_quarto },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.descricao_quarto = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass:
-                "col-md-12 d-flex align-items-end align-content-center m-0 p-0",
-              attrs: { enctype: "multipart/form-data" },
-              on: { submit: _vm.formSubmit }
-            },
-            [
-              _c("div", { staticClass: "col-md-6 m-0 p-0" }, [
-                _c("label", { attrs: { for: "inputFile" } }, [
-                  _vm._v("Imagem do quarto")
+        "h1",
+        { staticClass: "p-4", staticStyle: { "text-align": "center" } },
+        [_vm._v("\n    Cadastrar quarto\n  ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex" }, [
+        _c(
+          "form",
+          { staticClass: "col-md-12 p-0 m-0", on: { submit: _vm.addRoom } },
+          [
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { attrs: { for: "inputTitulo" } }, [
+                  _vm._v("Titulo")
                 ]),
                 _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
                 _c("input", {
-                  attrs: { id: "inputFile", type: "file", required: "" },
-                  on: { change: _vm.onChange }
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.titulo,
+                      expression: "titulo"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputTitulo",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.titulo },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.titulo = $event.target.value
+                    }
+                  }
                 })
               ]),
               _vm._v(" "),
-              _vm._m(0)
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary col-md-12 mt-4",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("\n        Enviar\n      ")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body col-md-12 p-0 m-0 pt-4" }, [
-            _vm.success != ""
-              ? _c("div", { staticClass: "alert alert-success" }, [
-                  _vm._v("\n          Imagem inserida com sucesso\n        ")
-                ])
-              : _vm._e()
-          ])
-        ]
-      )
-    ])
-  ])
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { attrs: { for: "inputEmail4" } }, [
+                  _vm._v("Preco")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.preco,
+                      expression: "preco"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputPreco",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.preco },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.preco = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { attrs: { for: "inputPreco" } }, [_vm._v("Cep")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cep,
+                      expression: "cep"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputPais",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.cep },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.cep = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputPais" } }, [_vm._v("Pais")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.pais,
+                      expression: "pais"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputEstado",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.pais },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.pais = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputEstado" } }, [
+                  _vm._v("Estado")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.estado,
+                      expression: "estado"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputEmail4",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.estado },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.estado = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputCidade" } }, [
+                  _vm._v("Cidade")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cidade,
+                      expression: "cidade"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputCidade",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.cidade },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.cidade = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputNumero" } }, [
+                  _vm._v("Numero")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.numero,
+                      expression: "numero"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputNumero",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.numero },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.numero = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-12" }, [
+                _c("label", { attrs: { for: "inputRua" } }, [_vm._v("Rua")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.rua,
+                      expression: "rua"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputRua",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.rua },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.rua = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputQuantidadeDeCamas" } }, [
+                  _vm._v("Quantidade de camas")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quantidade_camas,
+                      expression: "quantidade_camas"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputQuantidadeDeCamas",
+                    type: "number",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.quantidade_camas },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.quantidade_camas = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputQuantidadeDeBanheiros" } }, [
+                  _vm._v("Quantidade de banheiros")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quantidade_banheiros,
+                      expression: "quantidade_banheiros"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputQuantidadeDeBanheiros",
+                    type: "number",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.quantidade_banheiros },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.quantidade_banheiros = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputQuantidadeDeHospedes" } }, [
+                  _vm._v("Quantidade de hóspedes")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quantidade_hospedes,
+                      expression: "quantidade_hospedes"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputQuantidadeDeHospedes",
+                    type: "number",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.quantidade_hospedes },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.quantidade_hospedes = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { attrs: { for: "inputQuantidadeDeQuartos" } }, [
+                  _vm._v("Quantidade de quartos")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quantidade_quartos,
+                      expression: "quantidade_quartos"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "inputQuantidadeDeQuartos",
+                    type: "number",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.quantidade_quartos },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.quantidade_quartos = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-12" }, [
+                _c("label", { attrs: { for: "descricaoQuarto" } }, [
+                  _vm._v("Descrição")
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.descricao_quarto,
+                      expression: "descricao_quarto"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "descricaoQuarto",
+                    type: "text",
+                    placeholder: "Email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.descricao_quarto },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.descricao_quarto = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass:
+                  "col-md-12 d-flex align-items-end align-content-center m-0 p-0",
+                attrs: { enctype: "multipart/form-data" },
+                on: { submit: _vm.formSubmit }
+              },
+              [
+                _c("div", { staticClass: "col-md-6 m-0 p-0" }, [
+                  _c("label", { attrs: { for: "inputFile" } }, [
+                    _vm._v("Imagem do quarto")
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { id: "inputFile", type: "file", required: "" },
+                    on: { change: _vm.onChange }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary col-md-12 mt-4",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("\n        Enviar\n      ")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body col-md-12 p-0 m-0 pt-4" }, [
+              _vm.success != ""
+                ? _c("div", { staticClass: "alert alert-success" }, [
+                    _vm._v("\n          " + _vm._s(_vm.success) + "\n        ")
+                  ])
+                : _vm._e()
+            ])
+          ]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -57025,15 +57053,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./resources/js/Pages/RoomForm.vue ***!
   \*****************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RoomForm_vue_vue_type_template_id_332eab68_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoomForm.vue?vue&type=template&id=332eab68&scoped=true& */ "./resources/js/Pages/RoomForm.vue?vue&type=template&id=332eab68&scoped=true&");
 /* harmony import */ var _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoomForm.vue?vue&type=script&lang=js& */ "./resources/js/Pages/RoomForm.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57063,7 +57090,7 @@ component.options.__file = "resources/js/Pages/RoomForm.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/Pages/RoomForm.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

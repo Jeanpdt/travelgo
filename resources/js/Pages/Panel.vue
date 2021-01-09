@@ -6,6 +6,10 @@
         v-for="room in rooms"
         :key="`room_${room.id}`"
       >
+        <img
+          :src="getImageSrc(room.imagem_url)"
+          alt=""
+        >
         {{ room.imagem_url }}
       </div>
     </div>
@@ -25,6 +29,13 @@ export default {
 	mounted() {
 		this.$store.dispatch('rooms/getRooms');
 	},
+  methods: {
+    getImageSrc(image){
+      if(image){
+        return image;
+      }
+    },
+  }
 };
 </script>
 
