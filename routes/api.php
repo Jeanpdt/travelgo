@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TesteController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +29,13 @@ Route::group(['prefix' => 'teste'], function () {
   Route::get('edit/{id}', [TesteController::class, 'edit']);
   Route::post('update/{id}', [TesteController::class, 'update']);
   Route::delete('delete/{id}', [TesteController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'room'], function () {
+  Route::get('', [RoomController::class, 'index']);
+  Route::get('edit/{id}', [RoomController::class, 'edit']);
+  Route::post('add', [RoomController::class, 'add']);
+  Route::post('update/{id}', [RoomController::class, 'update']);
+  Route::delete('delete/{id}', [RoomController::class, 'delete']);
 });
 

@@ -1,7 +1,14 @@
 <template>
   <div>
     <navbar />
-    <div>quartos</div>
+    <div>
+      <div
+        v-for="room in rooms"
+        :key="`room_${room.id}`"
+      >
+        {{ room.cep }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,7 +16,15 @@
 import Navbar from '../Components/Navbar';
 export default {
 	name: 'Panel',
-	components: {Navbar}
+	components: {Navbar},
+	computed: {
+		rooms() {
+			return this.$store.state.rooms.rooms;
+		}
+	},
+	mounted() {
+		this.$store.dispatch('rooms/getRooms');
+	},
 };
 </script>
 

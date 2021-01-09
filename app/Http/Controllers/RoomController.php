@@ -7,53 +7,38 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function index()
-    {
-        $rooms = Room::latest()->paginate(5);
+  public function index()
+  {
+    $testes = Room::all()->toArray();
+    return $testes;
+  }
 
-        return view('rooms.index',compact('rooms'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+  public function add(Request $request)
+  {
+    $teste = new Room;
+    $teste->create($request->all());
+    return response()->json('The teste successfully added');
+  }
 
-    public function create()
-    {
-        return view('rooms.create');
+  public function edit($id)
+  {
+    $teste = Teste::find($id);
+    return response()->json($teste);
+  }
 
-    }
+  public function update($id, Request $request)
+  {
+    $teste = Teste::find($id);
+    $teste->update($request->all());
 
-    public function store(Request $request)
-    {
-        Room::create($request->all());
+    return response()->json('The teste successfully updated');
+  }
 
-        return redirect()->route('rooms.index')
-            ->with('success','Quarto criado com sucesso.');
-    }
+  public function delete($id)
+  {
+    $teste = Teste::find($id);
+    $teste->delete();
 
-    public function show(Room $room)
-    {
-        return view('rooms.show',compact('room'));
-
-    }
-
-    public function edit(Room $room)
-    {
-        return view('rooms.edit',compact('room'));
-
-    }
-
-    public function update(Request $request, Room $room)
-    {
-        $room->update($request->all());
-
-        return redirect()->route('rooms.index')
-            ->with('success','Quarto atualizado com sucesso.');
-    }
-
-    public function destroy(Room $room)
-    {
-        $room->delete();
-
-        return redirect()->route('rooms.index')
-            ->with('success','Quarto deletado com sucesso.');
-    }
+    return response()->json('The teste successfully deleted');
+  }
 }
