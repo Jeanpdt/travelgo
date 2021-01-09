@@ -2087,6 +2087,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2112,8 +2114,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RoomForm',
+  data: function data() {
+    return {
+      name: '',
+      file: '',
+      success: ''
+    };
+  },
   computed: {
     test: {
       set: function set(val) {
@@ -2127,6 +2171,25 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addTest: function addTest() {
       this.$store.dispatch('rooms/addTeste');
+    },
+    onChange: function onChange(e) {
+      this.file = e.target.files[0];
+    },
+    formSubmit: function formSubmit(e) {
+      e.preventDefault();
+      var existingObj = this;
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      var data = new FormData();
+      data.append('file', this.file);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('http://localhost:8000/api/upload', data, config).then(function (res) {
+        existingObj.success = res.data.success;
+      })["catch"](function (err) {
+        existingObj.output = err;
+      });
     }
   }
 });
@@ -39354,48 +39417,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", { attrs: { method: "POST" } }, [
-    _c("div", { staticClass: "form-row" }, [
-      _c("div", { staticClass: "form-group col-md-6" }, [
-        _c("label", { attrs: { for: "inputEmail4" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.test,
-              expression: "test"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "inputEmail4", type: "email", placeholder: "Email" },
-          domProps: { value: _vm.test },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.test = $event.target.value
-            }
-          }
-        })
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n          Laravel Vue JS File Upload Demo\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm.success != ""
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.success) + "\n          "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                attrs: { enctype: "multipart/form-data" },
+                on: { submit: _vm.formSubmit }
+              },
+              [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "file" },
+                  on: { change: _vm.onChange }
+                }),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-primary btn-block" }, [
+                  _vm._v("\n              Upload\n            ")
+                ])
+              ]
+            )
+          ])
+        ])
       ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            return _vm.addTest()
-          }
-        }
-      },
-      [_vm._v("\n    Sign in\n  ")]
-    )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -56386,16 +56446,14 @@ var actions = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log();
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/teste/add', state.test);
+              _context.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/teste/add', state.test);
 
-            case 3:
+            case 2:
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
-              console.log(data);
 
-            case 6:
+            case 4:
             case "end":
               return _context.stop();
           }

@@ -19,9 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e6df395-0cc0-4f42-9256-a6097ad240ca" name="Default Changelist" comment="latest alterations">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0e6df395-0cc0-4f42-9256-a6097ad240ca" name="Default Changelist" comment="adjusted web routes and api routes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/RoomForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/RoomForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Store/modules/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Store/modules/rooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -171,9 +174,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -210,7 +214,11 @@
       <workItem from="1609760377159" duration="3494000" />
       <workItem from="1609786247754" duration="192000" />
       <workItem from="1609810308683" duration="175000" />
-      <workItem from="1610066325141" duration="386000" />
+      <workItem from="1610066325141" duration="2954000" />
+      <workItem from="1610069321870" duration="25000" />
+      <workItem from="1610070311185" duration="1089000" />
+      <workItem from="1610149118490" duration="2041000" />
+      <workItem from="1610151179480" duration="3123000" />
     </task>
     <task id="LOCAL-00001" summary="added quick start">
       <created>1609720061614</created>
@@ -240,7 +248,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610066647256</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="latest alterations">
+      <created>1610066718712</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610066718712</updated>
+    </task>
+    <task id="LOCAL-00006" summary="adjusted web routes and api routes">
+      <created>1610157825468</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610157825468</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,32 +284,7 @@
     <MESSAGE value="added quick start" />
     <MESSAGE value="adjusted eslint" />
     <MESSAGE value="latest alterations" />
-    <option name="LAST_COMMIT_MESSAGE" value="latest alterations" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="410" y="294" width="720" height="538" key="#ESLint" timestamp="1609788515509">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="410" y="294" width="720" height="538" key="#ESLint/53.27.1867.1053@53.27.1867.1053" timestamp="1609788515509" />
-    <state x="719" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609793260991">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="719" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/53.27.1867.1053@53.27.1867.1053" timestamp="1609793260991" />
-    <state x="769" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1609810321746">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="769" y="310" width="424" height="484" key="FileChooserDialogImpl/53.27.1867.1053@53.27.1867.1053" timestamp="1609810321746" />
-    <state x="477" y="188" key="SettingsEditor" timestamp="1609786315775">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="477" y="188" key="SettingsEditor/53.27.1867.1053@53.27.1867.1053" timestamp="1609786315775" />
-    <state x="581" y="288" width="797" height="528" key="Vcs.Push.Dialog.v2" timestamp="1609791644460">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="581" y="288" width="797" height="528" key="Vcs.Push.Dialog.v2/53.27.1867.1053@53.27.1867.1053" timestamp="1609791644460" />
-    <state x="649" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1609791353494">
-      <screen x="53" y="27" width="1867" height="1053" />
-    </state>
-    <state x="649" y="257" width="672" height="678" key="search.everywhere.popup/53.27.1867.1053@53.27.1867.1053" timestamp="1609791353494" />
+    <MESSAGE value="adjusted web routes and api routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusted web routes and api routes" />
   </component>
 </project>
