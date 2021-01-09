@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <navbar />
     <h1
       class="p-4"
       style="text-align: center"
@@ -220,8 +221,10 @@
 
 <script>
 import axios from 'axios';
+import Navbar from '../Components/Navbar';
 export default {
 	name: 'RoomForm',
+	components: {Navbar},
 	data() {
 		return{
 			name: '',
