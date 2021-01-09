@@ -2068,11 +2068,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Panel',
   components: {
     Navbar: _Components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    rooms: function rooms() {
+      return this.$store.state.rooms.rooms;
+    }
+  },
+  mounted: function mounted() {
+    this.$store.dispatch('rooms/getRooms');
   }
 });
 
@@ -2152,6 +2167,163 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RoomForm',
@@ -2163,18 +2335,126 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    test: {
+    quantidade_camas: {
       set: function set(val) {
-        return this.$store.dispatch('rooms/setTest', val);
+        return this.$store.dispatch('rooms/setQuantidadeCamas', val);
       },
       get: function get() {
-        return this.$store.state.rooms.test;
+        return this.$store.state.rooms.form.quantidade_camas;
+      }
+    },
+    preco: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setPreco', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.preco;
+      }
+    },
+    titulo: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setTitulo', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.titulo;
+      }
+    },
+    quantidade_banheiros: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setQuantidadeBanheiros', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.quantidade_banheiros;
+      }
+    },
+    descricao_quarto: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setDescricaoQuarto', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.descricao_quarto;
+      }
+    },
+    quantidade_hospedes: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setQuantidadeHospedes', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.quantidade_hospedes;
+      }
+    },
+    quantidade_quartos: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setQuantidadeQuartos', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.quantidade_quartos;
+      }
+    },
+    numero: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setNumero', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.numero;
+      }
+    },
+    estado: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setEstado', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.estado;
+      }
+    },
+    cidade: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setCidade', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.cidade;
+      }
+    },
+    pais: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setPais', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.pais;
+      }
+    },
+    cep: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setCep', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.cep;
+      }
+    },
+    rua: {
+      set: function set(val) {
+        return this.$store.dispatch('rooms/setRua', val);
+      },
+      get: function get() {
+        return this.$store.state.rooms.form.rua;
       }
     }
   },
+  watch: {
+    success: function success() {
+      this.$store.dispatch('rooms/setImagenUrl', this.success);
+    }
+  },
   methods: {
-    addTest: function addTest() {
-      this.$store.dispatch('rooms/addTeste');
+    addRoom: function addRoom(e) {
+      e.preventDefault();
+
+      if (this.success) {
+        this.$store.dispatch('rooms/addRoom');
+        this.$router.push('/panel');
+      } else {
+        alert('Insira a imagem');
+      }
     },
     onChange: function onChange(e) {
       this.file = e.target.files[0];
@@ -39395,7 +39675,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("navbar"), _vm._v(" "), _c("div", [_vm._v("quartos")])],
+    [
+      _c("navbar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        _vm._l(_vm.rooms, function(room) {
+          return _c("div", { key: "room_" + room.id }, [
+            _vm._v("\n      " + _vm._s(room.imagem_url) + "\n    ")
+          ])
+        }),
+        0
+      )
+    ],
     1
   )
 }
@@ -39422,54 +39714,507 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n          Laravel Vue JS File Upload Demo\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _vm.success != ""
-              ? _c("div", { staticClass: "alert alert-success" }, [
-                  _vm._v(
-                    "\n            " + _vm._s(_vm.success) + "\n          "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                attrs: { enctype: "multipart/form-data" },
-                on: { submit: _vm.formSubmit }
-              },
-              [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "file" },
-                  on: { change: _vm.onChange }
-                }),
-                _vm._v(" "),
-                _c("button", { staticClass: "btn btn-primary btn-block" }, [
-                  _vm._v("\n              Upload\n            ")
-                ])
-              ]
-            )
-          ])
-        ])
-      ])
+    _c("h1", { staticClass: "p-4", staticStyle: { "text-align": "center" } }, [
+      _vm._v("\n    Cadastrar quarto\n  ")
     ]),
     _vm._v(" "),
-    _c("img", {
-      attrs: {
-        src: __webpack_require__(/*! ../../../public/storage/uploads/1610160063_der.png */ "./storage/app/public/uploads/1610160063_der.png"),
-        alt: ""
-      }
-    })
+    _c("div", { staticClass: "d-flex" }, [
+      _c(
+        "form",
+        { staticClass: "col-md-12 p-0 m-0", on: { submit: _vm.addRoom } },
+        [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "inputTitulo" } }, [
+                _vm._v("Titulo")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.titulo,
+                    expression: "titulo"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputTitulo",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.titulo },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.titulo = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "inputEmail4" } }, [_vm._v("Preco")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.preco,
+                    expression: "preco"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputPreco",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.preco },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.preco = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "inputPreco" } }, [_vm._v("Cep")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.cep,
+                    expression: "cep"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputPais",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.cep },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.cep = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputPais" } }, [_vm._v("Pais")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pais,
+                    expression: "pais"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputEstado",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.pais },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.pais = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputEstado" } }, [
+                _vm._v("Estado")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.estado,
+                    expression: "estado"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputEmail4",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.estado },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.estado = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputCidade" } }, [
+                _vm._v("Cidade")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.cidade,
+                    expression: "cidade"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputCidade",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.cidade },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.cidade = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputNumero" } }, [
+                _vm._v("Numero")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.numero,
+                    expression: "numero"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputNumero",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.numero },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.numero = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-12" }, [
+              _c("label", { attrs: { for: "inputRua" } }, [_vm._v("Rua")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.rua,
+                    expression: "rua"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputRua",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.rua },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.rua = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputQuantidadeDeCamas" } }, [
+                _vm._v("Quantidade de camas")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quantidade_camas,
+                    expression: "quantidade_camas"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputQuantidadeDeCamas",
+                  type: "number",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.quantidade_camas },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.quantidade_camas = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputQuantidadeDeBanheiros" } }, [
+                _vm._v("Quantidade de banheiros")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quantidade_banheiros,
+                    expression: "quantidade_banheiros"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputQuantidadeDeBanheiros",
+                  type: "number",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.quantidade_banheiros },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.quantidade_banheiros = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputQuantidadeDeHospedes" } }, [
+                _vm._v("Quantidade de hóspedes")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quantidade_hospedes,
+                    expression: "quantidade_hospedes"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputQuantidadeDeHospedes",
+                  type: "number",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.quantidade_hospedes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.quantidade_hospedes = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "inputQuantidadeDeQuartos" } }, [
+                _vm._v("Quantidade de quartos")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quantidade_quartos,
+                    expression: "quantidade_quartos"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "inputQuantidadeDeQuartos",
+                  type: "number",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.quantidade_quartos },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.quantidade_quartos = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-12" }, [
+              _c("label", { attrs: { for: "descricaoQuarto" } }, [
+                _vm._v("Descrição")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.descricao_quarto,
+                    expression: "descricao_quarto"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "descricaoQuarto",
+                  type: "text",
+                  placeholder: "Email",
+                  required: ""
+                },
+                domProps: { value: _vm.descricao_quarto },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.descricao_quarto = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass:
+                "col-md-12 d-flex align-items-end align-content-center m-0 p-0",
+              attrs: { enctype: "multipart/form-data" },
+              on: { submit: _vm.formSubmit }
+            },
+            [
+              _c("div", { staticClass: "col-md-6 m-0 p-0" }, [
+                _c("label", { attrs: { for: "inputFile" } }, [
+                  _vm._v("Imagem do quarto")
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { id: "inputFile", type: "file", required: "" },
+                  on: { change: _vm.onChange }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary col-md-12 mt-4",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("\n        Enviar\n      ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body col-md-12 p-0 m-0 pt-4" }, [
+            _vm.success != ""
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _vm._v("\n          Imagem inserida com sucesso\n        ")
+                ])
+              : _vm._e()
+          ])
+        ]
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 m-0 p-0" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary btn-block", attrs: { type: "submit" } },
+        [_vm._v("\n            Upload\n          ")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56280,14 +57025,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./resources/js/Pages/RoomForm.vue ***!
   \*****************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RoomForm_vue_vue_type_template_id_332eab68_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoomForm.vue?vue&type=template&id=332eab68&scoped=true& */ "./resources/js/Pages/RoomForm.vue?vue&type=template&id=332eab68&scoped=true&");
 /* harmony import */ var _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoomForm.vue?vue&type=script&lang=js& */ "./resources/js/Pages/RoomForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RoomForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -56317,7 +57063,7 @@ component.options.__file = "resources/js/Pages/RoomForm.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/Pages/RoomForm.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56444,45 +57190,203 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = {
-  count: 0,
-  test: null
+  rooms: {},
+  form: {
+    imagem_url: null,
+    quantidade_camas: null,
+    preco: null,
+    titulo: null,
+    quantidade_banheiros: null,
+    descricao_quarto: null,
+    quantidade_hospedes: null,
+    quantidade_quartos: null,
+    numero: null,
+    cidade: null,
+    estado: null,
+    pais: null,
+    cep: null,
+    rua: null
+  }
 };
-var getters = {};
+var getters = {
+  rooms: function rooms(state) {
+    return state.rooms;
+  }
+};
 var actions = {
-  addTeste: function addTeste(state) {
+  addRoom: function addRoom(_ref) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _yield$axios$post, data;
-
+      var state, room;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/teste/add', state.test);
+              state = _ref.state;
+              _context.prev = 1;
+              room = JSON.parse(JSON.stringify(state.form));
+              _context.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/room/add', room);
 
-            case 2:
-              _yield$axios$post = _context.sent;
-              data = _yield$axios$post.data;
+            case 5:
+              _context.next = 10;
+              break;
 
-            case 4:
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0);
+
+            case 10:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[1, 7]]);
     }))();
   },
-  setTest: function setTest(_ref, test) {
-    var commit = _ref.commit;
-    commit('SET_TESTE', test);
+  getRooms: function getRooms(_ref2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var dispatch, _yield$axios$get, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              dispatch = _ref2.dispatch;
+              _context2.prev = 1;
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/room');
+
+            case 4:
+              _yield$axios$get = _context2.sent;
+              data = _yield$axios$get.data;
+              dispatch('setRooms', data);
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+              console.log(_context2.t0);
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }))();
+  },
+  setRooms: function setRooms(_ref3, rooms) {
+    var commit = _ref3.commit;
+    commit('SET_ROOMS', rooms);
+  },
+  setQuantidadeCamas: function setQuantidadeCamas(_ref4, quantidade_camas) {
+    var commit = _ref4.commit;
+    commit('SET_QUANTIDADE_CAMAS', quantidade_camas);
+  },
+  setPreco: function setPreco(_ref5, preco) {
+    var commit = _ref5.commit;
+    commit('SET_PRECO', preco);
+  },
+  setTitulo: function setTitulo(_ref6, titulo) {
+    var commit = _ref6.commit;
+    commit('SET_TITULO', titulo);
+  },
+  setQuantidadeBanheiros: function setQuantidadeBanheiros(_ref7, quantidade_banheiros) {
+    var commit = _ref7.commit;
+    commit('SET_QUANTIDADE_BANHEIROS', quantidade_banheiros);
+  },
+  setDescricaoQuarto: function setDescricaoQuarto(_ref8, descricao_quarto) {
+    var commit = _ref8.commit;
+    commit('SET_DESCRICAO_QUARTO', descricao_quarto);
+  },
+  setQuantidadeHospedes: function setQuantidadeHospedes(_ref9, quantidade_hospedes) {
+    var commit = _ref9.commit;
+    commit('SET_QUANTIDADE_HOSPEDES', quantidade_hospedes);
+  },
+  setQuantidadeQuartos: function setQuantidadeQuartos(_ref10, quantidade_quartos) {
+    var commit = _ref10.commit;
+    commit('SET_QUANTIDADE_QUARTO', quantidade_quartos);
+  },
+  setNumero: function setNumero(_ref11, numero) {
+    var commit = _ref11.commit;
+    commit('SET_NUMERO', numero);
+  },
+  setCidade: function setCidade(_ref12, cidade) {
+    var commit = _ref12.commit;
+    commit('SET_CIDADE', cidade);
+  },
+  setEstado: function setEstado(_ref13, estado) {
+    var commit = _ref13.commit;
+    commit('SET_ESTADO', estado);
+  },
+  setPais: function setPais(_ref14, pais) {
+    var commit = _ref14.commit;
+    commit('SET_PAIS', pais);
+  },
+  setCep: function setCep(_ref15, cep) {
+    var commit = _ref15.commit;
+    commit('SET_CEP', cep);
+  },
+  setRua: function setRua(_ref16, rua) {
+    var commit = _ref16.commit;
+    commit('SET_RUA', rua);
+  },
+  setImagenUrl: function setImagenUrl(_ref17, imagemUrl) {
+    var commit = _ref17.commit;
+    commit('SET_IMAGEM_URL', imagemUrl);
   }
 };
 var mutations = {
   increment: function increment(state) {
     state.count++;
   },
-  SET_TESTE: function SET_TESTE(state, room) {
-    state.test = room;
+  SET_DESCRICAO_QUARTO: function SET_DESCRICAO_QUARTO(state, descricao_quarto) {
+    state.form.descricao_quarto = descricao_quarto;
+  },
+  SET_PRECO: function SET_PRECO(state, preco) {
+    state.form.preco = preco;
+  },
+  SET_TITULO: function SET_TITULO(state, titulo) {
+    state.form.titulo = titulo;
+  },
+  SET_QUANTIDADE_BANHEIROS: function SET_QUANTIDADE_BANHEIROS(state, quantidade_banheiros) {
+    state.form.quantidade_banheiros = quantidade_banheiros;
+  },
+  SET_QUANTIDADE_HOSPEDES: function SET_QUANTIDADE_HOSPEDES(state, quantidade_hospedes) {
+    state.form.quantidade_hospedes = quantidade_hospedes;
+  },
+  SET_QUANTIDADE_QUARTO: function SET_QUANTIDADE_QUARTO(state, quantidade_quartos) {
+    state.form.quantidade_quartos = quantidade_quartos;
+  },
+  SET_QUANTIDADE_CAMAS: function SET_QUANTIDADE_CAMAS(state, quantidade_camas) {
+    state.form.quantidade_camas = quantidade_camas;
+  },
+  SET_NUMERO: function SET_NUMERO(state, numero) {
+    state.form.numero = numero;
+  },
+  SET_CIDADE: function SET_CIDADE(state, cidade) {
+    state.form.cidade = cidade;
+  },
+  SET_ESTADO: function SET_ESTADO(state, estado) {
+    state.form.estado = estado;
+  },
+  SET_PAIS: function SET_PAIS(state, pais) {
+    state.form.pais = pais;
+  },
+  SET_CEP: function SET_CEP(state, cep) {
+    state.form.cep = cep;
+  },
+  SET_RUA: function SET_RUA(state, rua) {
+    state.form.rua = rua;
+  },
+  SET_ROOMS: function SET_ROOMS(state, rooms) {
+    state.rooms = rooms;
+  },
+  SET_IMAGEM_URL: function SET_IMAGEM_URL(state, imagemUrl) {
+    state.form.imagem_url = imagemUrl;
+    console.log('state', this.state);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56587,17 +57491,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./storage/app/public/uploads/1610160063_der.png":
-/*!*******************************************************!*\
-  !*** ./storage/app/public/uploads/1610160063_der.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1610160063_der.png?318354256c88fae01095019f946784b0";
 
 /***/ }),
 

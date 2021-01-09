@@ -6,7 +6,7 @@
         v-for="room in rooms"
         :key="`room_${room.id}`"
       >
-        {{ room.cep }}
+        {{ room.imagem_url }}
       </div>
     </div>
   </div>
