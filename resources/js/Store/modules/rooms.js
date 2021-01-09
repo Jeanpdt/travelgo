@@ -11,13 +11,7 @@ const getters = {
 
 const actions = {
 	async addTeste(state) {
-
-		console.log();
-		const {data} = await axios.post('http://localhost:8000/teste/add', state.test);
-
-		console.log(data);
-
-
+	  const {data} = await axios.post('http://localhost:8000/api/teste/add', state.test);
 	},
 	setTest({commit}, test) {
 		commit('SET_TESTE', test);
