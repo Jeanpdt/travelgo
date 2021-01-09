@@ -54,6 +54,10 @@
         </div>
       </div>
     </div>
+    <img
+      src="../../../public/storage/uploads/1610160063_der.png"
+      alt=""
+    >
   </div>
 </template>
 

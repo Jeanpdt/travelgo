@@ -2148,6 +2148,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RoomForm',
@@ -39455,7 +39459,14 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("img", {
+      attrs: {
+        src: __webpack_require__(/*! ../../../public/storage/uploads/1610160063_der.png */ "./storage/app/public/uploads/1610160063_der.png"),
+        alt: ""
+      }
+    })
   ])
 }
 var staticRenderFns = []
@@ -56576,6 +56587,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./storage/app/public/uploads/1610160063_der.png":
+/*!*******************************************************!*\
+  !*** ./storage/app/public/uploads/1610160063_der.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1610160063_der.png?318354256c88fae01095019f946784b0";
 
 /***/ }),
 
