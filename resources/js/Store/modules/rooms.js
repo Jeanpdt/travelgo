@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const state = {
 	rooms: {},
+	room: {},
 	form: {
 	  imagem_url: null,
 		quantidade_camas: null,
@@ -23,6 +24,9 @@ const state = {
 const getters = {
 	rooms: state => {
 		return state.rooms;
+	},
+	room: state => {
+		return state.room;
 	}
 };
 
@@ -41,6 +45,14 @@ const actions = {
 		try {
 			const {data} = await axios.get('http://localhost:8000/api/room');
 			dispatch('setRooms', data);
+		} catch (e) {
+			console.log(e);
+		}
+	},
+	async getRoom({dispatch}, roomId){
+		try {
+			const {data} = await axios.get(`http://localhost:8000/api/room/${roomId}`);
+			dispatch('setRoom', data);
 		} catch (e) {
 			console.log(e);
 		}
@@ -89,6 +101,9 @@ const actions = {
 	},
 	setImagenUrl({commit}, imagemUrl) {
 		commit('SET_IMAGEM_URL', imagemUrl);
+	},
+	setRoom({commit}, imagemUrl) {
+		commit('SET_ROOM', imagemUrl);
 	},
 };
 
@@ -141,8 +156,10 @@ const mutations = {
 	},
 	SET_IMAGEM_URL(state, imagemUrl) {
 		state.form.imagem_url = imagemUrl;
-		console.log('state', this.state);
-	}
+	},
+	SET_ROOM(state, room) {
+		state.room = room;
+	},
 };
 
 export default {

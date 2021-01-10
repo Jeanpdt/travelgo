@@ -1,10 +1,16 @@
 <template>
-  <div class="container">
-    <h1>Cadastrar quarto</h1>
+  <div class="container-fluid">
+    <navbar />
+    <h1
+      class="p-4"
+      style="text-align: center"
+    >
+      Cadastrar quarto
+    </h1>
 
     <div class="d-flex">
       <form
-        class="col-md-10"
+        class="col-md-12 p-0 m-0"
         @submit="addRoom"
       >
         <div class="form-row">
@@ -89,7 +95,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-12">
             <label for="inputRua">Rua</label>
             <input
               id="inputRua"
@@ -161,66 +167,59 @@
           </div>
         </div>
 
+
+        <form
+          enctype="multipart/form-data"
+          class="col-md-12 d-flex align-items-end align-content-center m-0 p-0"
+          @submit="formSubmit"
+        >
+          <div class="col-md-6 m-0 p-0">
+            <label for="inputFile">Imagem do quarto</label>
+            <br>
+            <input
+              id="inputFile"
+              type="file"
+              required
+              @change="onChange"
+            >
+          </div>
+
+          <div class="col-md-2 m-0 p-0">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+            >
+              Upload
+            </button>
+          </div>
+        </form>
+
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-primary col-md-12 mt-4"
         >
-          Sign in
+          Enviar
         </button>
-      </form>
 
-      <form
-        enctype="multipart/form-data"
-        class="col-md-2"
-        @submit="formSubmit"
-      >
-        <input
-          type="file"
-          class="form-control"
-          @change="onChange"
-        >
-        <button class="btn btn-primary btn-block">
-          Upload
-        </button>
+        <div class="card-body col-md-12 p-0 m-0 pt-4">
+          <div
+            v-if="success != ''"
+            class="alert alert-success"
+          >
+            {{ success }}
+          </div>
+        </div>
       </form>
     </div>
-
-    <div class="card-body">
-      <div
-        v-if="success != ''"
-        class="alert alert-success"
-      >
-        {{ success }}
-      </div>
-    </div>
-
-
-
-
-
-    <!--        <div class="row justify-content-center">-->
-    <!--          <div class="col-md-8">-->
-    <!--            <div class="card">-->
-    <!--              <div class="card-header">-->
-    <!--                Laravel Vue JS File Upload Demo-->
-    <!--              </div>-->
-
-    <!--              -->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-
-    <!--    <img-->
-    <!--      src="../../../public/storage/uploads/1610160063_der.png"-->
-    <!--      alt=""-->
-    <!--    >-->
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Navbar from '../Components/Navbar';
 export default {
 	name: 'RoomForm',
+	components: {Navbar},
 	data() {
 		return{
 			name: '',
@@ -342,14 +341,19 @@ export default {
 	methods: {
 		addRoom(e) {
 			e.preventDefault();
-			this.$store.dispatch('rooms/addRoom');
-			this.$router.push('/panel');
+			if (this.success) {
+				this.$store.dispatch('rooms/addRoom');
+				this.$router.push('/panel');
+			} else {
+			  alert('Insira a imagem');
+			}
 		},
 		onChange(e) {
 			this.file = e.target.files[0];
 		},
 		formSubmit(e) {
 			e.preventDefault();
+
 			let existingObj = this;
 
 			const config = {

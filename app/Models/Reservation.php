@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nome', 'preco', 'descricao'
+        'user_id',
+        'room_id',
+        'data_inicial',
+        'data_final',
     ];
 }
+
+

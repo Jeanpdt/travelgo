@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a
-      class="navbar-brand"
-      href="#"
+      class="navbar__logo navbar-brand"
+      @click="goToHome"
     >TravelGo</a>
     <button
       class="navbar-toggler"
@@ -21,45 +21,65 @@
       class="collapse navbar-collapse"
     >
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <router-link
-            class="nav-link"
-            :to="{name: 'roomCreate'}"
-          >
-            Novo quarto <span class="sr-only">(current)</span>
-          </router-link>
+        <li
+          class="navbar__link nav-item mr-2"
+          @click="goToCreateRoom"
+        >
+          Novo quarto
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="#"
-          >Listar quartos</a>
+        <li
+          class="navbar__link nav-item"
+          @click="goToPanel"
+        >
+          Listar quartos
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        >
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-        >
-          Search
-        </button>
-      </form>
+      <div>{{ user.name }}</div>
     </div>
   </nav>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
-	name: 'Navbar'
+	name: 'Navbar',
+	computed: {
+		...mapGetters({
+			user: 'users/user',
+		})
+	},
+	created() {
+		this.$store.dispatch('users/getUser');
+	},
+	methods: {
+	  goToPanel() {
+	    this.$router.push({name: 'panel'});
+		},
+		goToHome() {
+			this.$router.push({name: 'home'});
+		},
+		goToCreateRoom() {
+			this.$router.push({name: 'roomCreate'});
+		}
+
+	}
 };
 </script>
 
 <style scoped>
+.navbar__link {
+  padding: 8px;
+}
+
+.navbar__link:hover {
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #b6b6b6;
+}
+
+.navbar__logo {
+  cursor: pointer;
+}
 
 </style>

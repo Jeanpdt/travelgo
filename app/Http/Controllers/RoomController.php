@@ -9,36 +9,36 @@ class RoomController extends Controller
 {
   public function index()
   {
-    $testes = Room::all()->toArray();
-    return $testes;
+    $rooms = Room::all()->toArray();
+    return $rooms;
   }
 
   public function add(Request $request)
   {
-    $teste = new Room;
-    $teste->create($request->all());
-    return response()->json('The teste successfully added');
+    $room = new Room;
+    $room->create($request->all());
+    return response()->json('The room successfully added');
   }
 
-  public function edit($id)
+  public function getById($id)
   {
-    $teste = Teste::find($id);
-    return response()->json($teste);
+    $room = Room::find($id);
+    return response()->json($room);
   }
 
   public function update($id, Request $request)
   {
-    $teste = Teste::find($id);
-    $teste->update($request->all());
+    $room = Room::find($id);
+    $room->update($request->all());
 
-    return response()->json('The teste successfully updated');
+    return response()->json('The room successfully updated');
   }
 
   public function delete($id)
   {
-    $teste = Teste::find($id);
-    $teste->delete();
+    $room = Room::find($id);
+    $room->delete();
 
-    return response()->json('The teste successfully deleted');
+    return response()->json('The room successfully deleted');
   }
 }

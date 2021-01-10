@@ -1,9 +1,6 @@
 <template>
   <div class="main d-flex flex-column justify-content-center align-items-center">
     <h1>Milhares de locais para você!</h1>
-
-    <a @click="addTeste('test')">clique-me</a>
-
     <router-link :to="{name: 'panel'}">
       <button
         type="button"
@@ -16,20 +13,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
 	name: 'Home',
-	computed: {
-		...mapState({
-			count: state => state.rooms.count,
-		})
-	},
-	methods: {
-		addTeste(teste) {
-			this.$store.dispatch('rooms/addTeste', teste);
-		}
-	}
 };
 </script>
 

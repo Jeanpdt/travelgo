@@ -1,5 +1,10 @@
 <template>
-  <router-view />
+  <div>
+    <header id="header">
+      <Menu />
+    </header>
+    <router-view />
+  </div>
 </template>
 
 <script>

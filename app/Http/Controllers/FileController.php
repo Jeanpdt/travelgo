@@ -21,6 +21,8 @@ class FileController extends Controller
 
     if($request->file()) {
       $file_name = time().'_'.$request->file->getClientOriginalName();
+      $file_name = str_replace(' ', '', $file_name);
+
       $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
 
       $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
