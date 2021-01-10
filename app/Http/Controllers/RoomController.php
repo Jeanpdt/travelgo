@@ -20,9 +20,9 @@ class RoomController extends Controller
     return response()->json('The teste successfully added');
   }
 
-  public function edit($id)
+  public function getById($id)
   {
-    $teste = Teste::find($id);
+    $teste = Room::find($id);
     return response()->json($teste);
   }
 

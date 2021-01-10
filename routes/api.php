@@ -33,7 +33,7 @@ Route::group(['prefix' => 'teste'], function () {
 
 Route::group(['prefix' => 'room'], function () {
   Route::get('', [RoomController::class, 'index']);
-  Route::get('edit/{id}', [RoomController::class, 'edit']);
+  Route::get('{id}', [RoomController::class, 'getById']);
   Route::post('add', [RoomController::class, 'add']);
   Route::post('update/{id}', [RoomController::class, 'update']);
   Route::delete('delete/{id}', [RoomController::class, 'delete']);
