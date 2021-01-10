@@ -11,7 +11,7 @@
         "eslint": "./node_modules/.bin/eslint resources/js/ test/ --ext .js,.vue"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.19.2",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
         "eslint": "^7.17.0",
@@ -28,5 +28,10 @@
         "vue-router": "^3.4.9",
         "vue-template-compiler": "^2.6.12",
         "vuex": "^3.6.0"
+    },
+    "dependencies": {
+        "@websanova/vue-auth": "^2.21.14-beta",
+        "es6-promise": "^4.2.6",
+        "vue-axios": "^2.1.4"
     }
 }
