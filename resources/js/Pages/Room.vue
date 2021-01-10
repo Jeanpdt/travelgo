@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <Navbar />
+    <Navbar :user="user.name" />
     <div class="room">
       <div class="room__image-cover">
         <img
@@ -68,13 +68,15 @@
 
 <script>
 import Navbar from '../Components/Navbar';
+import {mapGetters} from 'vuex';
 export default {
 	name: 'Room',
 	components: {Navbar},
 	computed: {
-		room() {
-			return this.$store.state.rooms.room;
-		}
+		...mapGetters({
+			user: 'users/user',
+			room: 'rooms/room'
+		})
 	},
 	created() {
 		this.$store.dispatch('rooms/getRoom', this.$route.params.id);

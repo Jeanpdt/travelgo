@@ -34,6 +34,7 @@
           Listar quartos
         </li>
       </ul>
+      <div>{{ user }}</div>
     </div>
   </nav>
 </template>
@@ -41,6 +42,12 @@
 <script>
 export default {
 	name: 'Navbar',
+	props: {
+		user: {
+			type: String,
+			default: ''
+		},
+	},
 	methods: {
 	  goToPanel() {
 	    this.$router.push({name: 'panel'});

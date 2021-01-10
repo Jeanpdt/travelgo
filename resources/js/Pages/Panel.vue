@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <navbar />
+    <navbar :user="user.name" />
     <div class="panel">
       <div
         v-for="room in rooms"
@@ -38,21 +38,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Navbar from '../Components/Navbar';
 export default {
 	name: 'Panel',
-	components: {Navbar},
+	components: { Navbar },
 	computed: {
-		rooms() {
-			return this.$store.state.rooms.rooms;
-		}
+		...mapGetters({
+			user: 'users/user',
+			rooms: 'rooms/rooms'
+		})
 	},
-	mounted() {
+	created() {
+		this.$store.dispatch('users/getUser');
 		this.$store.dispatch('rooms/getRooms');
 	},
 	methods: {
 		getImageSrc(image){
-			if(image){
+			if(image) {
 				return image;
 			} else {
 				return '';
