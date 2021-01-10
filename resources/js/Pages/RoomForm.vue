@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <navbar />
     <h1
       class="p-4"
@@ -206,13 +206,11 @@
             v-if="success != ''"
             class="alert alert-success"
           >
-            {{success}}
+            {{ success }}
           </div>
         </div>
       </form>
     </div>
-
-
   </div>
 </template>
 

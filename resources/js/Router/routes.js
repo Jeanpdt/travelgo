@@ -1,6 +1,7 @@
 import Home from '../Pages/Home';
 import Panel from '../Pages/Panel';
 import RoomForm from '../Pages/RoomForm';
+import Room from '../Pages/Room';
 
 const routes =  [
 	{
@@ -17,6 +18,11 @@ const routes =  [
 		path: '/room/create',
 		name: 'roomCreate',
 		component: RoomForm
+	},
+	{
+		path: '/room/:id',
+		name: 'room',
+		component: Room
 	}
 ];
 
