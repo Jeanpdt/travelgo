@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\RoomController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TesteController;
 
@@ -16,10 +16,6 @@ use App\Http\Controllers\TesteController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::post('/upload', [FileController::class, 'upload'])->name('upload');
 
@@ -38,4 +34,18 @@ Route::group(['prefix' => 'room'], function () {
   Route::post('update/{id}', [RoomController::class, 'update']);
   Route::delete('delete/{id}', [RoomController::class, 'delete']);
 });
+
+Route::prefix('auth')->group(function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::get('refresh', [AuthController::class, 'refresh']);
+    Route::get('users', [AuthController::class, 'index']);
+    Route::middleware('auth:api')->group(function () {
+        // Get user info
+        Route::get('user', [AuthController::class, 'user']);
+        // Logout user from application
+        Route::post('logout', [AuthController::class, 'logout']);
+    });
+});
+
 

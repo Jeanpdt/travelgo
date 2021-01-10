@@ -17,6 +17,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import axios from 'axios';
 
 export default {
 	name: 'Home',
@@ -25,9 +26,16 @@ export default {
 			count: state => state.rooms.count,
 		})
 	},
+	async created() {
+		const {data} = await axios.get('http://localhost:8000/api/auth/user');
+
+		console.log(data);
+	},
 	methods: {
-		addTeste(teste) {
+		async addTeste(teste) {
 			this.$store.dispatch('rooms/addTeste', teste);
+
+
 		}
 	}
 };
