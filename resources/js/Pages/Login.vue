@@ -48,7 +48,14 @@
                 type="submit"
                 class="btn btn-primary"
               >
-                Signin
+                Entrar
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="goToRegister"
+              >
+                Registrar-se
               </button>
             </form>
           </div>
@@ -80,9 +87,7 @@ export default {
 					email: app.email,
 					password: app.password
 				},
-				success: function(res) {
-					console.log(res);
-					// handle redirection
+				success: function() {
 					app.success = true;
 					const redirectTo = 'home';
 					this.$router.push({name: redirectTo});
@@ -94,6 +99,9 @@ export default {
 				rememberMe: true,
 				fetchUser: true
 			});
+		},
+		goToRegister() {
+		  this.$router.push('/register');
 		}
 	}
 };

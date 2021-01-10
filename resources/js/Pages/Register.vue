@@ -116,7 +116,6 @@ export default {
 	methods: {
 		register() {
 			var app = this;
-			console.log(this.$auth);
 			this.$auth.register({
 				data: {
 					name: app.name,
@@ -129,7 +128,6 @@ export default {
 					this.$router.push({name: 'login', params: {successRegistrationRedirect: true}});
 				},
 				error: function (res) {
-					// console.log(res.response.data.errors)
 					app.has_error = true;
 					app.error = res.response.data.error;
 					app.errors = res.response.data.errors || {};

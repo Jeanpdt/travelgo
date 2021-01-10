@@ -52,7 +52,6 @@ const actions = {
 	async getRoom({dispatch}, roomId){
 		try {
 			const {data} = await axios.get(`http://localhost:8000/api/room/${roomId}`);
-			console.log(data);
 			dispatch('setRoom', data);
 		} catch (e) {
 			console.log(e);
@@ -157,7 +156,6 @@ const mutations = {
 	},
 	SET_IMAGEM_URL(state, imagemUrl) {
 		state.form.imagem_url = imagemUrl;
-		console.log('state', this.state);
 	},
 	SET_ROOM(state, room) {
 		state.room = room;

@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TesteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +19,6 @@ use App\Http\Controllers\TesteController;
 
 Route::post('/upload', [FileController::class, 'upload'])->name('upload');
 
-
-Route::group(['prefix' => 'teste'], function () {
-  Route::post('add', [TesteController::class, 'add']);
-  Route::get('edit/{id}', [TesteController::class, 'edit']);
-  Route::post('update/{id}', [TesteController::class, 'update']);
-  Route::delete('delete/{id}', [TesteController::class, 'delete']);
-});
-
 Route::group(['prefix' => 'room'], function () {
   Route::get('', [RoomController::class, 'index']);
   Route::get('{id}', [RoomController::class, 'getById']);
@@ -35,15 +27,21 @@ Route::group(['prefix' => 'room'], function () {
   Route::delete('delete/{id}', [RoomController::class, 'delete']);
 });
 
+Route::group(['prefix' => 'reservation'], function () {
+    Route::get('', [ReservationController::class, 'index']);
+    Route::get('{id}', [ReservationController::class, 'getById']);
+    Route::post('add', [ReservationController::class, 'add']);
+    Route::post('update/{id}', [ReservationController::class, 'update']);
+    Route::delete('delete/{id}', [ReservationController::class, 'delete']);
+});
+
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
     Route::get('refresh', [AuthController::class, 'refresh']);
     Route::get('users', [AuthController::class, 'index']);
     Route::middleware('auth:api')->group(function () {
-        // Get user info
         Route::get('user', [AuthController::class, 'user']);
-        // Logout user from application
         Route::post('logout', [AuthController::class, 'logout']);
     });
 });

@@ -11,53 +11,66 @@
       </div>
       <div class="room__content mt-4 mb-4">
         <div class="d-flex justify-content-between">
-          <div>
+          <div class="col-md-8">
             <h3>{{ room.titulo }}</h3>
             <div>
               <p>{{ room.descricao_quarto }}</p>
             </div>
           </div>
           <div
-            class="card"
+            class="card col-md-4"
             style="width: 18rem;"
           >
-            <div class="card-body">
-              <h5 class="card-title">
-                $ {{ room.preco }} / noite
-              </h5>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label
-                    class="input-group-text"
-                    for="inputGroupSelect01"
-                  >Hóspedes</label>
+            <div
+              class="card-body"
+            >
+              <form @submit.prevent="makeReservation">
+                <h5 class="card-title">
+                  $ {{ room.preco }} / noite
+                </h5>
+                <div class="d-flex justify-content-between input-group mb-3">
+                  <div class="form-group">
+                    <label
+                      class="control-label"
+                      for="inputDataInicial"
+                    >Data inicial</label>
+                    <div class="">
+                      <input
+                        id="inputDataInicial"
+                        v-model="data_inical"
+                        class="form-control"
+                        type="date"
+                        value="2011-08-19"
+                        required
+                      >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      class="control-label"
+                      for="inputDataFinal"
+                    >Data final</label>
+                    <div class="">
+                      <input
+                        id="inputDataFinal"
+                        v-model="data_final"
+                        class="form-control"
+                        type="date"
+                        value="2011-08-19"
+                        required
+                      >
+                    </div>
+                  </div>
                 </div>
-                <select
-                  id="inputGroupSelect01"
-                  class="custom-select"
-                >
-                  <option selected>
-                    Choose...
-                  </option>
-                  <option value="1">
-                    One
-                  </option>
-                  <option value="2">
-                    Two
-                  </option>
-                  <option value="3">
-                    Three
-                  </option>
-                </select>
-              </div>
-              <div class="d-flex justify-content-center">
-                <button
-                  type="button"
-                  class="room__button card-title"
-                >
-                  Alugar
-                </button>
-              </div>
+                <div class="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="room__button card-title"
+                  >
+                    Alugar
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -69,10 +82,27 @@
 <script>
 import Navbar from '../Components/Navbar';
 import {mapGetters} from 'vuex';
+
 export default {
 	name: 'Room',
 	components: {Navbar},
 	computed: {
+		data_inical: {
+			set(val) {
+				return this.$store.dispatch('reservations/setDataInicial', val);
+			},
+			get() {
+				return this.$store.state.reservations.reservation_data.data_inical;
+			}
+		},
+		data_final: {
+			set(val) {
+				return this.$store.dispatch('reservations/setDataFinal', val);
+			},
+			get() {
+				return this.$store.state.reservations.reservation_data.data_final;
+			}
+		},
 		...mapGetters({
 			user: 'users/user',
 			room: 'rooms/room'
@@ -82,6 +112,14 @@ export default {
 		this.$store.dispatch('rooms/getRoom', this.$route.params.id);
 	},
 	methods: {
+		makeReservation() {
+			this.$store.dispatch('reservations/makeReservation', {
+				quartoId: this.$route.params.id,
+				userId: this.user.id
+			});
+
+			this.$router.push('/panel');
+		},
 		getImageSrc(image){
 			if(image){
 				return image;
