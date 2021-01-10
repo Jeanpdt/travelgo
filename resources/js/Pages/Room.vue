@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <Navbar :user="user.name" />
+    <Navbar />
     <div class="room">
       <div class="room__image-cover">
         <img

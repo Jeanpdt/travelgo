@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <navbar :user="user.name" />
+    <navbar />
     <div class="panel">
       <div
         v-for="room in rooms"

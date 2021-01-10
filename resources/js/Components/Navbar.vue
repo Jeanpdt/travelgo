@@ -34,19 +34,23 @@
           Listar quartos
         </li>
       </ul>
-      <div>{{ user }}</div>
+      <div>{{ user.name }}</div>
     </div>
   </nav>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
 	name: 'Navbar',
-	props: {
-		user: {
-			type: String,
-			default: ''
-		},
+	computed: {
+		...mapGetters({
+			user: 'users/user',
+		})
+	},
+	created() {
+		this.$store.dispatch('users/getUser');
 	},
 	methods: {
 	  goToPanel() {
