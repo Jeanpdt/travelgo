@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Room;
+use App\Models\Teste;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class TesteController extends Controller
 {
   public function index()
   {
-    $testes = Room::all()->toArray();
-    return $testes;
+    $testes = Teste::all()->toArray();
+    return array_reverse($testes);
   }
 
   public function add(Request $request)
   {
-    $teste = new Room;
-    $teste->create($request->all());
+    dd($request->all());
+    $teste = new Teste([
+      'teste' => $request->input('teste'),
+    ]);
+
+    $teste->save();
+
     return response()->json('The teste successfully added');
   }
 
