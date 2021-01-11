@@ -5,6 +5,7 @@ import Room from '../Pages/Room';
 import Register from '../Pages/Register';
 import Login from '../Pages/Login';
 import Dashboard from '../Pages/user/Dashboard';
+import Reservation from '../Pages/Reservation';
 
 
 
@@ -62,6 +63,14 @@ const routes =  [
 		path: '/dashboard',
 		name: 'dashboard',
 		component: Dashboard,
+		meta: {
+			auth: true
+		}
+	},
+	{
+		path: '/reservation',
+		name: 'reservation',
+		component: Reservation,
 		meta: {
 			auth: true
 		}

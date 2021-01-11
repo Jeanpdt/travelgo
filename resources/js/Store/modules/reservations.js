@@ -35,6 +35,18 @@ const actions = {
 			console.log(e);
 		}
 	},
+	async getReservationsByUser({dispatch}, userId) {
+		try {
+			const {data} = await axios.get('http://localhost:8000/api/room', {
+				params:{
+					userId: userId
+				}
+			});
+			dispatch('setRooms', data);
+		} catch (e) {
+			console.log(e);
+		}
+	},
 	setDataInicial({commit}, dataInicial) {
 		commit('SET_DATA_INICIAL', dataInicial);
 	},
