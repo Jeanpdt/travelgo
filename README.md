@@ -1,6 +1,6 @@
 ## Instalando a aplicação
 
-Observação: Executar a aplicação no Google Chrome.
+Observação: Executar a aplicação em um sistema Linux e ultilizar  o navegador Google Chrome.
 
 Configure o arquivo .env, ultilize o seguinte comando para criar o arquivo:
 
@@ -13,6 +13,8 @@ Unix:
 ```
 cp .env.example .env
 ```
+
+Crie um banco de dados novo e configure as seguintes várives de ambiente no arquivo .env:  DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME and DB_PASSWORD.
 
 Digite os seguintes comandos, na raiz do projeto:
 
@@ -49,10 +51,9 @@ Gere a key do projeto:
 php artisan key:generate
 ```
 
-Crie um banco de dados novo e configure as seguintes várives de ambiente no arquivo .env:  DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME and DB_PASSWORD e digite o comando ``` php artisan migrate ``` para criar a estrutura do banco de dados
+``` php artisan migrate ```
 
-Para iniciar a aplicação digite ``` php artisan serve ```
-
+``` php artisan serve ```
 
 
 
