@@ -40,10 +40,9 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::get('refresh', [AuthController::class, 'refresh']);
     Route::get('users', [AuthController::class, 'index']);
-    Route::middleware('auth:api')->group(function () {
-        Route::get('user', [AuthController::class, 'user']);
-        Route::post('logout', [AuthController::class, 'logout']);
-    });
+    Route::get('user', [AuthController::class, 'user']);
+    Route::post('logout', [AuthController::class, 'logout']);
+
 });
 
 

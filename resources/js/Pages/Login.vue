@@ -90,7 +90,7 @@ export default {
 				success: function() {
 					app.success = true;
 					const redirectTo = 'home';
-					this.$router.push({name: redirectTo});
+					this.$router.push({name: 'panel'}).catch(() => {});
 				},
 				error: function(res) {
 					app.has_error = true;
