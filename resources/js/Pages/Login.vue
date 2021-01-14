@@ -89,7 +89,6 @@ export default {
 				},
 				success: function() {
 					app.success = true;
-					const redirectTo = 'home';
 					this.$router.push({name: 'panel'}).catch(() => {});
 				},
 				error: function(res) {
@@ -101,7 +100,7 @@ export default {
 			});
 		},
 		goToRegister() {
-		  this.$router.push('/register');
+      this.$router.push('/register');
 		}
 	}
 };
