@@ -68,12 +68,6 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-		component: Login,
-		meta: {
-			auth: false
-		}
-	},
-	// USER ROUTES
         $user = User::find(1);
         return response()->json([
             'status' => 'success',
