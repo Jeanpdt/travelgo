@@ -39,6 +39,18 @@ Em seguida, digite:
 npm install
 ```
 
+Configure o arquivo .env, ultilize o seguinte comando para criar o arquivo:
+
+Windows:
+```
+copy .env.example .env
+```
+
+Unix:
+```
+cp .env.example .env
+```
+
 Gere a key do projeto:
 
 ```
@@ -49,8 +61,8 @@ php artisan key:generate
 php artisan migrate 
 ```
 
-```
- php artisan serve 
+``` 
+php artisan serve
  ```
 
 

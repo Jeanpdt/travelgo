@@ -41,6 +41,9 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+header('Access-Control-Allow-Headers: Authorization');
+header('Access-Control-Expose-Headers: Authorization');
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

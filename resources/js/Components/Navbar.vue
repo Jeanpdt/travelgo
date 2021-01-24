@@ -31,10 +31,16 @@
           class="navbar__link nav-item"
           @click="goToPanel"
         >
-          Listar quartos
+          Quartos disponíveis
+        </li>
+        <li
+          class="navbar__link nav-item"
+          @click="goToReservation"
+        >
+          Minhas reservas
         </li>
       </ul>
-      <div>{{ user.name }}</div>
+      <div> {{ user.name }}</div>
     </div>
   </nav>
 </template>
@@ -58,6 +64,9 @@ export default {
 		},
 		goToHome() {
 			this.$router.push({name: 'home'});
+		},
+		goToReservation() {
+			this.$router.push({name: 'reservation'});
 		},
 		goToCreateRoom() {
 			this.$router.push({name: 'roomCreate'});
