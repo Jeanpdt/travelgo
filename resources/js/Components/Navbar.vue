@@ -40,7 +40,7 @@
           Minhas reservas
         </li>
       </ul>
-      <div>{{ user.name }}</div>
+      <div> {{ user.name }}</div>
     </div>
   </nav>
 </template>
