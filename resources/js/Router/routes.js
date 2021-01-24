@@ -15,7 +15,7 @@ const routes =  [
 		name: 'home',
 		component: Login,
 		meta: {
-			auth: true
+			auth: false
 		}
 	},
 	{
@@ -23,7 +23,7 @@ const routes =  [
 		name: 'panel',
 		component: Panel,
 		meta: {
-			auth: true
+			auth: false
 		}
 	},
 	{
@@ -31,7 +31,7 @@ const routes =  [
 		name: 'roomCreate',
 		component: RoomForm,
 		meta: {
-			auth: true
+			auth: false
 		}
 	},
 	{
@@ -39,7 +39,7 @@ const routes =  [
 		name: 'room',
 		component: Room,
 		meta: {
-			auth: true
+			auth: false
 		}
 	},
 	{
@@ -64,7 +64,7 @@ const routes =  [
 		name: 'dashboard',
 		component: Dashboard,
 		meta: {
-			auth: true
+			auth: false
 		}
 	},
 	{
